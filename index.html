@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps XP Tracker</title>
+</head>
+<body>
+  <h1>DevOps XP Tracker</h1>
+  <ul>
+    <li><input type="checkbox" value="20"> Watch AWS EC2 Video (20 XP)</li>
+    <li><input type="checkbox" value="30"> Create S3 Bucket (30 XP)</li>
+    <li><input type="checkbox" value="40"> Setup GitHub Actions CI (40 XP)</li>
+  </ul>
+  <button onclick="submitXP()">Submit XP</button>
+  <p id="total">Total XP: 0</p>
+
+  <script>
+    function submitXP() {
+      let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let total = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) total += parseInt(cb.value);
+      });
+      document.getElementById('total').innerText = 'Total XP: ' + total;
+      
+      // Send to Google Sheet
+      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?xp=' + total)
+        .then(res => alert("XP sent to sheet!"))
+        .catch(err => alert("Failed to send XP"));
+    }
+  </script>
+</body>
+</html>
