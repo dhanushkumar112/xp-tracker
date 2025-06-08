@@ -23,7 +23,7 @@
       document.getElementById('total').innerText = 'Total XP: ' + total;
       
       // Send to Google Sheet
-      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?xp=' + total)
+      fetch('https://script.google.com/macros/s/AKfycbyWuHRTiIgmKwsfb8Nh3skZbNT3xcvSsaMABN79qEObj1vmiKc1amISPdRiScJpyeKm/exec?xp=' + total)
         .then(res => alert("XP sent to sheet!"))
         .catch(err => alert("Failed to send XP"));
     }
